@@ -1,6 +1,7 @@
 package com.hembree.recipe_app.model;
 
 import org.hibernate.annotations.CreationTimestamp;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
@@ -14,6 +15,7 @@ public class User {
     private String username;
     @Column(unique = true)
     private String email;
+    @JsonIgnore
     private String password;
     @CreationTimestamp
     private LocalDateTime createdAt;
