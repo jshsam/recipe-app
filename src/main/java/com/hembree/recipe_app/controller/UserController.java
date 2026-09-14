@@ -23,4 +23,8 @@ public class UserController {
         return users;
     }
 
+    @PostMapping
+    public User createUser(@RequestBody User user) {
+        return userRepository.save(user);
+    }
 }
