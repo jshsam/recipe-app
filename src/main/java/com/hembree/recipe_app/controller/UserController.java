@@ -3,6 +3,8 @@ package com.hembree.recipe_app.controller;
 import com.hembree.recipe_app.model.User;
 import com.hembree.recipe_app.repository.UserRepository;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -21,6 +23,12 @@ public class UserController {
     public List<User> getAllUsers() {
         List<User> users = userRepository.findAll();
         return users;
+    }
+
+    @GetMapping("/{id}")
+    public User getUserById(@PathVariable Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
     }
 
     @PostMapping
