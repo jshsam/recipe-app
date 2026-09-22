@@ -18,7 +18,6 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
-    // your method goes here
     @GetMapping
     public List<User> getAllUsers() {
         List<User> users = userRepository.findAll();
