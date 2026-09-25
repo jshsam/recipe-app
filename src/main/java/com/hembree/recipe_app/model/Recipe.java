@@ -1,10 +1,12 @@
 package com.hembree.recipe_app.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "recipes")
@@ -22,6 +24,9 @@ public class Recipe {
     @ManyToOne
     @JoinColumn(name = "owner_id")
     private User owner;
+    @OneToMany(mappedBy = "recipe")
+    @JsonManagedReference
+    private List<Ingredient> ingredients;
 
     public Recipe() {}
 
@@ -49,4 +54,7 @@ public class Recipe {
 
     public User getOwner() { return owner; }
     public void setOwner(User owner) { this.owner = owner; }
+
+    public List<Ingredient> getIngredients() { return ingredients; }
+
 }

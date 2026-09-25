@@ -29,7 +29,7 @@ public class RecipeController {
     }
 
     @PostMapping
-    public Recipe createRecipe(@RequestBody Recipe recipe) { return recipeRepository.save(recipe); }
+    public Recipe createRecipes(@RequestBody Recipe recipe) { return recipeRepository.save(recipe); }
 
     @DeleteMapping("/{id}")
     public void deleteRecipe(@PathVariable Long id) {
